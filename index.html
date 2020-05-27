@@ -30,12 +30,14 @@
                 console.log(response);
             });
 
-            function checkLoginState() {
+            
+        };
+        
+        function checkLoginState() {
                 FB.getLoginStatus(function (response) {
                     console.log(response);
                 });
             }
-        };
 
         (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];

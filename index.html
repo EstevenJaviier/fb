@@ -12,6 +12,9 @@
     <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
     </fb:login-button>
 
+    <button type="button" onclick="getData();">get data</button>
+    <button type="button" onclick="logout();">logout</button>
+
 
 
 
@@ -30,15 +33,31 @@
                 console.log(response);
             });
 
-            
-        };
-        
-        function checkLoginState() {
-                FB.getLoginStatus(function (response) {
-                    console.log(response);
-                });
-            }
 
+        };
+
+        function checkLoginState() {
+            FB.getLoginStatus(function (response) {
+                console.log(response);
+            });
+        }
+
+
+        function logout() {
+            FB.logout(function (response) {
+                console.log(response);
+            });
+        }
+        function getData() {
+            FB.api(
+                '/me',
+                'GET',
+                { "fields": "id,name,picture{url,width,height},last_name,middle_name,first_name" },
+                function (response) {
+                    console.log(response);
+                }
+            );
+        }
         (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) { return; }

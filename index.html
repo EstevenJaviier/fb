@@ -8,6 +8,13 @@
 </head>
 
 <body>
+
+    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+    </fb:login-button>
+
+
+
+
     <script>
         window.fbAsyncInit = function () {
             FB.init({
@@ -22,6 +29,12 @@
             FB.getLoginStatus(function (response) {
                 console.log(response);
             });
+
+            function checkLoginState() {
+                FB.getLoginStatus(function (response) {
+                    console.log(response);
+                });
+            }
         };
 
         (function (d, s, id) {
